@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-script = "*"
+flask-bootstrap = "*"
+flask-moment = "*"
 
 [dev-packages]
 
