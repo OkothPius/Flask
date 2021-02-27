@@ -1,1 +1,5 @@
-<h1>Hey, {{ name|capitalize }}</h1>
+{% if user %}
+    Hey, {{ name|capitalize }}!
+{% else %}
+    Hey, Stranger!
+{% endif %}        
