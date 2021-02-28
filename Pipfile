@@ -9,6 +9,7 @@ flask-script = "*"
 flask-wtf = "*"
 flask-bootstrap = "*"
 flask-moment = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 
