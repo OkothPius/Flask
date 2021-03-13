@@ -23,6 +23,7 @@ class DevelopmentConfig(Config):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://oruko:12345@localhost/blog'
 
 class TestingConfig(Config):
     Testing = True
