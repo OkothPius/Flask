@@ -15,8 +15,7 @@ def login():
             return redirect(request.args.get('next') or
                      url_for('main.index'))
         flash('Invalid username or password')
-    context = {'form':form}
-    return render_template('auth/login.html', context)
+    return render_template('auth/login.html', form=form)
 
 
 @auth.route('/register', methods=['GET', 'POST'])
@@ -29,8 +28,7 @@ def register():
         db.session.add(user)
         flash('You can now log in')
         return redirect(url_for('auth.register'))
-    context = {'form':form}
-    return render_template('auth/register.html', context)
+    return render_template('auth/register.html', form=form)
 
 
 
