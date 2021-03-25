@@ -49,6 +49,22 @@ def confirm(token):
     return redirect(url_for('main.index'))
 
 
+@auth.before_app_request
+def before_request():
+    if current_user.is_authenticated() \
+                    and not current_user.is_confirmed \
+                    and request.endpoint[:5] != 'auth.': \
+        return redirect(url_for('auth.unconfirmed'))
+
+
+@auth.route('/unconfirmed')
+def unconfirmed():
+    if current_user.is_anonymous or \
+        current_user.confirmed:
+        return redirect('main.index')
+    return render_template('auth/unconfirmed.html')
+
+
 
 @auth.route('/logout')    
 @login_required
