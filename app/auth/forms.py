@@ -11,7 +11,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Log in')
 
 
-class Registration(FlaskForm):
+class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[Required(), Length(1, 64), Email()])
     username = StringField('Username', validators=[Required(), 
                 Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,

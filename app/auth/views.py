@@ -2,8 +2,8 @@ from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
 from ..models import User
-from email import send_email
-from .forms import LoginForm
+from ..email import send_email
+from app.auth.forms import LoginForm, RegistrationForm
 from app import db
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -51,9 +51,7 @@ def confirm(token):
 
 @auth.before_app_request
 def before_request():
-    if current_user.is_authenticated() \
-                    and not current_user.is_confirmed \
-                    and request.endpoint[:5] != 'auth.': \
+    if current_user.is_authenticated and not current_user.is_confirmed and request.endpoint[:5] != 'auth.':
         return redirect(url_for('auth.unconfirmed'))
 
 
