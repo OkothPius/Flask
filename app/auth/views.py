@@ -30,8 +30,7 @@ def register():
         db.session.commit()
         token = user.generate_confirmation_token()
         send_email(user.email, 'Confirm Your Account', 
-                    'auth/email/confirm', user=user,
-                     token=token)
+                    'auth/email/confirm', user=user, token=token)
         flash('A confirmation email has been sent to your email.')
         return redirect(url_for('main.index'))
     return render_template('auth/register.html', form=form)
@@ -66,6 +65,7 @@ def unconfirmed():
 @auth.route('/confirm')
 def resend_confirmation():
     token = current_user.generate_confirmation_token()
+    user = User()
     send_email('auth/email/confirm', 'Confirm Your Account', user, token=token)
     flash('A new confirmation email has been send to your mail')
     return redirect(url_for('main.index'))
