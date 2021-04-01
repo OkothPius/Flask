@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/home/oruko/.local/share/virtualenvs/blog-SxTriIAV/bin/python"
+    "python.pythonPath": "/home/oruko/.local/share/virtualenvs/blog-SxTriIAV/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
